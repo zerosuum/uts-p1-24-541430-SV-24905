@@ -1,0 +1,282 @@
+{
+	"id": "3fb638ff-7b62-493e-9dea-f893ea89140b",
+	"name": "MulaiDulu REST API",
+	"timestamp": "2026-10-24T13:25:20.287Z",
+	"collection_id": "49312182-ef163dfc-bf11-4db8-8c21-910df475feb1",
+	"folder_id": 0,
+	"environment_id": "49312182-f80f96be-5086-40a7-998f-650dd3f9963d",
+	"totalPass": 2,
+	"delay": 0,
+	"persist": true,
+	"status": "finished",
+	"startedAt": "2026-10-24T13:25:19.293Z",
+	"totalFail": 0,
+	"results": [
+		{
+			"id": "22956241-4d25-4859-892f-c76538cb30ea",
+			"name": "01 - Login",
+			"url": "http://127.0.0.1:8000/api/login",
+			"time": 290,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Login 200": true
+			},
+			"testPassFailCounts": {
+				"Login 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				290
+			],
+			"allTests": [
+				{
+					"Login 200": true
+				}
+			]
+		},
+		{
+			"id": "70e0c17e-c5fa-4b57-92a4-aeb5d151997d",
+			"name": "02 - List Tasks",
+			"url": "http://127.0.0.1:8000/api/tasks",
+			"time": 10,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				10
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "009a2ebe-7443-44df-81f1-bc2dc31ba747",
+			"name": "03 - Create Task",
+			"url": "http://127.0.0.1:8000/api/tasks",
+			"time": 11,
+			"responseCode": {
+				"code": 201,
+				"name": "Created"
+			},
+			"tests": {
+				"Create 201": true
+			},
+			"testPassFailCounts": {
+				"Create 201": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				11
+			],
+			"allTests": [
+				{
+					"Create 201": true
+				}
+			]
+		},
+		{
+			"id": "26b83e88-425e-4334-b4c6-f4d8751f17ce",
+			"name": "04 - Task Detail",
+			"url": "http://127.0.0.1:8000/api/tasks/3",
+			"time": 10,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				10
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "d0d1db15-8479-429c-9a71-3a0f9dccb8c2",
+			"name": "05 - Update Task",
+			"url": "http://127.0.0.1:8000/api/tasks/3",
+			"time": 9,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				9
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "15eabf51-b34a-41bb-a12f-d48751e4207d",
+			"name": "06 - Validation 422",
+			"url": "http://127.0.0.1:8000/api/tasks",
+			"time": 9,
+			"responseCode": {
+				"code": 422,
+				"name": "Unprocessable Content"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				9
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "345466be-4791-492a-88d9-4754ea41a82c",
+			"name": "07 - Delete Task",
+			"url": "http://127.0.0.1:8000/api/tasks/3",
+			"time": 10,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				10
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "1d4dc606-7eed-495d-9677-be608186b81f",
+			"name": "08 - Detail After Delete 404",
+			"url": "http://127.0.0.1:8000/api/tasks/3",
+			"time": 8,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				8
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "20c895ba-78c0-47ae-a020-a16c97503b62",
+			"name": "09 - Logout",
+			"url": "http://127.0.0.1:8000/api/logout",
+			"time": 8,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				8
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "8cc1c6e0-df0f-4ce3-a5f4-4a2797d81652",
+			"name": "10 - Revoked Token 401",
+			"url": "http://127.0.0.1:8000/api/user",
+			"time": 8,
+			"responseCode": {
+				"code": 401,
+				"name": "Unauthorized"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				8
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "5ca6f9bb-5cbd-43ca-b0fd-1fa0341e3f96",
+			"name": "11 - No Token 401",
+			"url": "http://127.0.0.1:8000/api/tasks",
+			"time": 7,
+			"responseCode": {
+				"code": 401,
+				"name": "Unauthorized"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				7
+			],
+			"allTests": [
+				{}
+			]
+		}
+	],
+	"count": 1,
+	"totalTime": 380,
+	"collection": {
+		"requests": [
+			{
+				"id": "22956241-4d25-4859-892f-c76538cb30ea",
+				"method": "POST"
+			},
+			{
+				"id": "70e0c17e-c5fa-4b57-92a4-aeb5d151997d",
+				"method": "GET"
+			},
+			{
+				"id": "009a2ebe-7443-44df-81f1-bc2dc31ba747",
+				"method": "POST"
+			},
+			{
+				"id": "26b83e88-425e-4334-b4c6-f4d8751f17ce",
+				"method": "GET"
+			},
+			{
+				"id": "d0d1db15-8479-429c-9a71-3a0f9dccb8c2",
+				"method": "PATCH"
+			},
+			{
+				"id": "15eabf51-b34a-41bb-a12f-d48751e4207d",
+				"method": "POST"
+			},
+			{
+				"id": "345466be-4791-492a-88d9-4754ea41a82c",
+				"method": "DELETE"
+			},
+			{
+				"id": "1d4dc606-7eed-495d-9677-be608186b81f",
+				"method": "GET"
+			},
+			{
+				"id": "20c895ba-78c0-47ae-a020-a16c97503b62",
+				"method": "POST"
+			},
+			{
+				"id": "8cc1c6e0-df0f-4ce3-a5f4-4a2797d81652",
+				"method": "GET"
+			},
+			{
+				"id": "5ca6f9bb-5cbd-43ca-b0fd-1fa0341e3f96",
+				"method": "GET"
+			}
+		]
+	}
+}
