@@ -1,3 +1,5 @@
-
-# macOS Finder metadata
+# macOS
 .DS_Store
+
+# Local environment
+.env
