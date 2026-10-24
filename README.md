@@ -87,7 +87,7 @@ docker compose up -d --build
 docker compose exec backend php artisan db:seed --class=DemoUserSeeder
 ```
 
-6. Buka `http://localhost:8080`.
+6. Buka `http://localhost:8088`.
 
 Untuk memeriksa container:
 
