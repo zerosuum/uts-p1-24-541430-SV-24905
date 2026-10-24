@@ -9,7 +9,3 @@ if [ "${SEED_DEMO_USER:-false}" = "true" ]; then
 fi
 
 exec frankenphp run --config /etc/frankenphp/Caddyfile
-EOF
-
-chmod +x backend/docker-start.sh
-sh -n backend/docker-start.sh
