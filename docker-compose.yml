@@ -142,6 +142,27 @@ services:
         max-size: "5m"
         max-file: "3"
 
+  docker-stats:
+    build:
+      context: ./monitoring/docker-stats
+      dockerfile: Dockerfile
+    image: mulaidulu-docker-stats:1
+    restart: unless-stopped
+    read_only: true
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+    environment:
+      COMPOSE_PROJECT: mulaidulu
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+    logging:
+      driver: json-file
+      options:
+        max-size: "5m"
+        max-file: "3"
+
   node-exporter:
     image: prom/node-exporter:v1.8.1
     restart: unless-stopped
