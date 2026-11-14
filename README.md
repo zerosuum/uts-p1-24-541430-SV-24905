@@ -199,8 +199,12 @@ Jangan menyimpan password, token autentikasi, atau application key di source cod
 
 ## Status pengembangan
 
-Project masih dalam tahap implementasi dan pengujian untuk memenuhi kebutuhan UTS. Hasil akhir setiap fitur, workflow, dan pengujian akan diverifikasi melalui aplikasi yang berjalan, GitHub Actions, dan dokumentasi laporan.
+Aplikasi berjalan melalui Docker Compose. Konfigurasi monitoring dan dashboard tersimpan bersama source code agar dapat dijalankan ulang dari repository.
 
 ---
 
 **MulaiDulu** — satu tugas, satu langkah pertama.
+
+## Monitoring
+
+Prometheus, Grafana, cAdvisor, dan node-exporter dijalankan melalui Compose yang sama. Konfigurasi, dashboard, dan prosedur operasional dijelaskan di [docs/monitoring.md](docs/monitoring.md).
