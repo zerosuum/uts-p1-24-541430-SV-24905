@@ -3,3 +3,9 @@
 
 # Local environment
 .env
+
+# P10 local evidence, environment and report dependencies
+evidence-p10/
+.venv-p10/
+__pycache__/
+P10_*.pdf
