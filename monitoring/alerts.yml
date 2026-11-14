@@ -1,0 +1,13 @@
+groups:
+  - name: mulaidulu-availability
+    rules:
+      - alert: MulaiDuluBackendTidakTersedia
+        expr: up{job="mulaidulu"} == 0
+        for: 45s
+        labels:
+          severity: critical
+          application: mulaidulu
+        annotations:
+          summary: "API MulaiDulu tidak dapat di-scrape oleh Prometheus"
+          description: "Target backend:80 pada job mulaidulu tidak merespons selama minimal 45 detik."
+          first_action: "Periksa docker compose ps, kemudian docker compose logs --tail=80 backend dan status database."
