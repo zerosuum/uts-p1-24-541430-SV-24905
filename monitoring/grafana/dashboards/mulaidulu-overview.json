@@ -4,8 +4,7 @@
   "title": "MulaiDulu | Monitoring dan Kesiapan Layanan",
   "tags": [
     "mulaidulu",
-    "P11",
-    "observability"
+    "monitoring"
   ],
   "timezone": "browser",
   "schemaVersion": 39,
@@ -40,7 +39,7 @@
         "type": "prometheus",
         "uid": "prometheus"
       },
-      "description": "Monitoring khusus aplikasi MulaiDulu, bukan dashboard publik dari galeri.",
+      "description": "Ketersediaan endpoint metrik API MulaiDulu.",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -133,7 +132,7 @@
         "type": "prometheus",
         "uid": "prometheus"
       },
-      "description": "Monitoring khusus aplikasi MulaiDulu, bukan dashboard publik dari galeri.",
+      "description": "Status scrape semua sumber monitoring.",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -211,7 +210,7 @@
             "uid": "prometheus"
           },
           "editorMode": "code",
-          "expr": "min(up{job=~\"prometheus|cadvisor|node-exporter|mulaidulu\"})",
+          "expr": "min(up{job=~\"prometheus|cadvisor|node-exporter|mulaidulu|docker-stats\"})",
           "legendFormat": "Semua target",
           "refId": "A",
           "instant": true,
@@ -226,7 +225,7 @@
         "type": "prometheus",
         "uid": "prometheus"
       },
-      "description": "Monitoring khusus aplikasi MulaiDulu, bukan dashboard publik dari galeri.",
+      "description": "Laju respons HTTP aplikasi, tidak termasuk endpoint monitoring.",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -303,7 +302,7 @@
         "type": "prometheus",
         "uid": "prometheus"
       },
-      "description": "Monitoring khusus aplikasi MulaiDulu, bukan dashboard publik dari galeri.",
+      "description": "CPU container MulaiDulu dari penghitung waktu CPU Docker Engine, ditampilkan sebagai persentase satu core.",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -365,8 +364,8 @@
             "uid": "prometheus"
           },
           "editorMode": "code",
-          "expr": "sum by (container_label_com_docker_compose_service) (rate(container_cpu_usage_seconds_total{container_label_com_docker_compose_project=\"mulaidulu\",container_label_com_docker_compose_service!=\"\"}[5m])) * 100",
-          "legendFormat": "{{container_label_com_docker_compose_service}}",
+          "expr": "sum by (container) (rate(mulaidulu_container_cpu_usage_seconds_total{job=\"docker-stats\"}[2m])) * 100",
+          "legendFormat": "{{container}}",
           "refId": "A",
           "instant": false,
           "range": true
@@ -380,7 +379,7 @@
         "type": "prometheus",
         "uid": "prometheus"
       },
-      "description": "Monitoring khusus aplikasi MulaiDulu, bukan dashboard publik dari galeri.",
+      "description": "Pemakaian memori container MulaiDulu, tidak termasuk inactive file cache.",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -442,8 +441,8 @@
             "uid": "prometheus"
           },
           "editorMode": "code",
-          "expr": "sum by (container_label_com_docker_compose_service) (container_memory_usage_bytes{container_label_com_docker_compose_project=\"mulaidulu\",container_label_com_docker_compose_service!=\"\"})",
-          "legendFormat": "{{container_label_com_docker_compose_service}}",
+          "expr": "mulaidulu_container_memory_working_set_bytes{job=\"docker-stats\"}",
+          "legendFormat": "{{container}}",
           "refId": "A",
           "instant": false,
           "range": true
@@ -457,7 +456,7 @@
         "type": "prometheus",
         "uid": "prometheus"
       },
-      "description": "Monitoring khusus aplikasi MulaiDulu, bukan dashboard publik dari galeri.",
+      "description": "Laju respons API dengan status HTTP 5xx.",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -519,7 +518,7 @@
             "uid": "prometheus"
           },
           "editorMode": "code",
-          "expr": "sum(rate(mulaidulu_http_requests_total{job=\"mulaidulu\",status=~\"5..\"}[5m]))",
+          "expr": "sum(rate(mulaidulu_http_requests_total{job=\"mulaidulu\",status=~\"5..\"}[5m])) or vector(0)",
           "legendFormat": "5xx/detik",
           "refId": "A",
           "instant": false,
