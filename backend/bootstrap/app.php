@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\HealthController;
+use App\Http\Controllers\MetricsController;
+use App\Http\Middleware\CountHttpRequests;
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
@@ -17,9 +19,11 @@ return Application::configure(basePath: dirname(__DIR__))
         // web sessions when the database itself is unavailable.
         then: function (): void {
             Route::middleware('api')->get('/health', HealthController::class);
+            Route::middleware('api')->get('/metrics', MetricsController::class);
         },
     )
     ->withMiddleware(function (Middleware $middleware): void {
+        $middleware->append(CountHttpRequests::class);
         $middleware->redirectGuestsTo(
             fn (Request $request) => $request->is('api/*')
                 ? null
