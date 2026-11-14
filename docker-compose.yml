@@ -16,6 +16,11 @@ services:
       timeout: 5s
       retries: 10
       start_period: 10s
+    logging:
+      driver: json-file
+      options:
+        max-size: "5m"
+        max-file: "3"
 
   backend:
     build:
@@ -30,7 +35,8 @@ services:
       APP_KEY: ${APP_KEY:?APP_KEY is required}
       APP_URL: "http://localhost:8088"
 
-      LOG_CHANNEL: stderr
+      LOG_CHANNEL: stdout
+      LOG_LEVEL: info
       CACHE_STORE: database
       SESSION_DRIVER: database
       QUEUE_CONNECTION: sync
@@ -48,6 +54,17 @@ services:
     depends_on:
       db:
         condition: service_healthy
+    healthcheck:
+      test: ["CMD", "php", "/app/healthcheck.php"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+      start_period: 20s
+    logging:
+      driver: json-file
+      options:
+        max-size: "5m"
+        max-file: "3"
 
   frontend:
     build:
@@ -62,6 +79,11 @@ services:
     depends_on:
       backend:
         condition: service_healthy
+    logging:
+      driver: json-file
+      options:
+        max-size: "5m"
+        max-file: "3"
 
 volumes:
   postgres_data:
